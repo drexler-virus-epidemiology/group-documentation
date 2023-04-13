@@ -1,6 +1,6 @@
 # Using R
 
-    !!! todo
+!!! todo
     This site is dedicated to common use-cases of the R programming language.
 
 ```r
