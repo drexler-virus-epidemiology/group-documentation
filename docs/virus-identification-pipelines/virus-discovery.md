@@ -24,20 +24,24 @@ snakemake -s virusDiscovery.snakemake \
 
 Select taxa and enter them into the configuration file.
 
-Run the assembly pipeline. 
+## Inputs
 
-```bash
-snakemake -s virus_assembly.snakemake \
-    --use-conda \
-    --cores=8 \
-    --conda-frontend mamba \
-    --configfile 02.05-assemblyConfigTemplate/\
-                 assemblyConfigTemplate_2_Samples.yaml
-    --until diamondReadExtraction
-
-```
-
+* Reads
+* Database
 
 ## Steps and used tools
 
-* fastp, [SPades](https://github.com/ablab/spades), DIAMOND,
+* DB Check (and download)
+* Lane merging
+* Trimming (fastp)
+* Merge paired (?) reads
+    * What is R1, R2, R1up, R2up?
+* Allign DNA sequences against protein reference DB (diamond blastx)
+* Something about NCBI taxonomy (Diamond Sluice Python script)
+    * Turn Diamond Output into Readgroups asigned to Taxids
+    * Allign Reads and Taxon IDs for the Krona PLot
+* Update the Krona Taxonomy (krona)
+* Create the Krona plot (krona)
+* Create YAML configuration for the assembly pipeline
+
+

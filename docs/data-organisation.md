@@ -49,7 +49,11 @@ YYMM_cohort_analysis_trait/
 
 ### Readme Content
 
+### Script Organization
 
+* No paths in the script itself, use command line arguments or a configuration
+  file, e. g. YAML with entries like:
+    * `REFSEQ_DB: "/INPUT/DIR/PATH/"`
 
 ## Raw Data Repository
 
