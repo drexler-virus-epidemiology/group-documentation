@@ -7,7 +7,7 @@ After selecting taxa and entering them into the config file...
 Run the assembly pipeline until read extraction
 
 ```bash
-snakemake -s virus_assembly.snakemake \
+snakemake -s virus-assembly.snakemake \
     --use-conda \
     --cores=8 \
     --conda-frontend mamba \
@@ -22,7 +22,7 @@ necessary). Thee `--keep-going` flag skips samples where no contigs could be
 generated from the reads.
 
 ```bash 
-snakemake -s virus_assembly.snakemake \
+snakemake -s virus-assembly.snakemake \
     --profile cubi-v1 \
     --configfile 02.05-assemblyConfigTemplate/assemblyConfigTemplate_3_Samples.yaml \
     --keep-going \

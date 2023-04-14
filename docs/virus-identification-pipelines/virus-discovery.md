@@ -11,12 +11,12 @@ Maybe the system library `libxcrypt-compat` might be necessary in case you
 receive the error:
 
 ``` bash 
-snakemake -s virusDiscovery.snakemake \
+snakemake -s virus-discovery.snakemake \
     --use-conda \
     --cores=8 \
     --conda-frontend mamba \
     --config "readfolder=~/Dokumente/02_raw_data/\
-              230405_virusDiscoveryPipelineTestData/"\
+              230405_virus-discoveryPipelineTestData/"\
               "db=/home/carl/Dokumente/07_databases/\
                2023-03-13_refseqViral_2.0.14/" 
 

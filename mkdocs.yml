@@ -23,6 +23,14 @@ nav:
   - 'Analysis Pipelines':
     - 'Virus Discovery': virus-identification-pipelines/virus-discovery.md
     - 'Virus Assembly': virus-identification-pipelines/virus-assembly.md
+  - 'Useful Software':
+    - 'Bowtie 2': useful-software/bowtie-2.md
+    - 'DIAMOND': useful-software/diamond.md
+    - 'fastp': useful-software/fastp.md
+    - 'ffq': useful-software/ffq.md
+    - 'gget': useful-software/gget.md
+    - 'Kraken 2': useful-software/kraken-2.md
+    - 'SPAdes': useful-software/spades.md
   - To-Do: todo.md
 
 repo_url: ""
