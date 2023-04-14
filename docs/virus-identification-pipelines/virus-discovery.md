@@ -10,7 +10,7 @@ It may be necessary to install several other packages: `perl`, `libxcrypt`.
 Maybe the system library `libxcrypt-compat` might be necessary in case you
 receive the error:
 
-``` bash
+``` bash 
 snakemake -s virusDiscovery.snakemake \
     --use-conda \
     --cores=8 \
