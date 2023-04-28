@@ -5,7 +5,7 @@
 * How to use conda/mamba
 * How to use the cluster
 * How to use RStudio on the cluster
-* Using Git and GitLab
+* Using Git and GitLab (using old documentation)
 * How to setup analysis projects (git, linting, testing)
     * Using a style guide (rust API guidelines)
 * Pipeline documentation and tutorials
@@ -32,3 +32,4 @@
     * [ViReflow](https://www.nature.com/articles/s41598-022-09035-w)
     * [LAZYPIPE](https://www.nature.com/articles/s41598-022-09035-w)
         * [Homepage](https://www.helsinki.fi/en/projects/lazypipe)
+    * [Viral Host Detector](https://bioinformatics.cvr.ac.uk/software/viral-host-predictor/)
