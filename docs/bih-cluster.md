@@ -56,6 +56,30 @@ use case. The details are described
 
 * show my tmux.conf
 
+## Installing software
+
+* Download and extract micromamba binary
+* Start shell from a node: ` srun --time=01-01 --mem=32G --ntasks=1 --pty bash -i`
+* Install conda etc into the `~/work` directory (as the prefix) using `conda shell init -p ~/work/micromamba`
+
+## Running jobs
+
+* Using the scheduler with job scripts: 
+* Template: `/fast/projects/cubit/work/tutorial/skeletons/submit_job.sh`
+
+## Static data
+
+* [Link](https://bihealth.github.io/bih-cluster/cubit/)
+
+## Snakemake
+
+* Profile is here: `/etc/xdg/snakemake/cubi-v1` `https://docs.hpc.bihealth.org/slurm/snakemake/#snakemake-and-slurm`
+
+## Process monitoring
+
+* [Gangia](https://hpc-ganglia.cubi.bihealth.org)
+* `squeue --me`, `tail -f logs/<JOB-LOG>`
+
 ## RStudio on the cluster
 
 The OnDemand platform allows for 

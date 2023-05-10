@@ -5,10 +5,12 @@ Welcome to the documentation website of the virus epidemiology group.
 ## Contents
 
 * [Home](index.md)
+* [New Members](new-members.md)
+* [GitHub](github.md)
 * [GitLab](gitlab.md)
 * [R](r.md)
 * [BIH-Cluster](bih-cluster.md)
-* [Data Organisation](data-organisation.md)
+* [Data Organisation](data-organisation/file-system.md)
 * [Documentation](documentation.md)
 * Analysis Pipelines:
     - [Virus Discovery](virus-identification-pipelines/virus-discovery.md)

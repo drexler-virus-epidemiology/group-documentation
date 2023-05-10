@@ -37,63 +37,71 @@ library(data.table)
 #| include: false
 
 # define alternative package directory
-r_on_server <- TRUE
-if (r_on_server == TRUE) {
-  bp <- "/net/ifs1/san_projekte/projekte/genstat/"
-  computer <- "angmar"
-  .libPaths(
-    paste0(
-      bp,
-      "07_programme/rpackages/",
-      computer
-    )
-  )
-  # set number of cores
-  nc <- 10
+r_on_cluster <- TRUE
+if (r_on_cluster == TRUE) {
+  bp <- "/data/gpfs-1/users/cabe12_c"
+  .libPaths("/fast/work/groups/ag-drexler/RPackageLibrary/4.1.3/")
 } else {
   if (grepl(x = getwd(), pattern =  "carl")) {
-    bp <- "/home/carl/imise/"
-    
-    # set a more recent R snapshot as source repo
-    r = getOption("repos") 
-    r["CRAN"] = "https://mran.microsoft.com/snapshot/2022-12-08"
-    options(repos = r)
-    rm(r)
-    
-  } else if (grepl(x = getwd(), pattern = "J:/", fixed = TRUE)) {
-    bp <- "J:/genstat/"
-  } else {
-    bp <- "/net/ifs1/san_projekte/projekte/genstat/"
+    bp <- "/home/carl/Dokumente/06_projects/"
   }
-  # set number of cores
-  nc <- parallel::detectCores() - 1
 }
+
 #+ load.packages, include=F
 for (i in c(
   "data.table",
   "here",
-  "readxl",
+  "Hmisc",
   "ggplot2",
-)){
+  "ggrepel",
+  "ggthemes",
+  "Rqc",
+  "QuasR"
+  )
+  ) {
   suppressPackageStartupMessages(
-    library(i, character.only = TRUE, lib.loc = .libPaths()[1]
-    ))}
+    library(i, character.only = TRUE
+    ))
+  }
 
-# Check unsuccessful updates packages
-# old.packages()
+checkForUpdates <- FALSE
+if (checkForUpdates) {
+  
+  # set a more recent R snapshot as source repo
+  r = getOption("repos")
+  r["CRAN"] = "https://mran.microsoft.com/snapshot/2022-12-08"
+  options(repos = r)
+  rm(r)
+  
+  # Check unsuccessful updates packages
+  old.packages()
 
-# Update packages to that snapshot
-# update.packages(
-#   ask = FALSE, 
-#   checkBuilt = TRUE
-# )
+  # Update packages to that snapshot
+  update.packages(
+    ask = FALSE,
+    checkBuilt = TRUE
+  )
+}
 
 # ggplot theme
 ggplot2::theme_set(
-  theme_tufte(base_size = 14)  + 
-    theme(panel.background = element_rect(colour = "grey35")
-    )
+  theme_tufte(base_size = 14) +
+    theme(panel.background = element_rect(colour = "grey35"))
 )
+
+# Knitr should use the project root and not the script location as root
+knitr::opts_knit$set(root.dir = here(), 
+                     base.dir = here())
+
+# Give data.table enough threads
+writeLines(paste0("Threads available: ", parallel::detectCores()))
+writeLines(paste0("Threads given to data.table: ", parallel::detectCores() / 2))
+setDTthreads(parallel::detectCores() / 2)
+
+# Option setup for
+options(prType = 'html')
+options(knitr.table.format = "html")
+options(grType = 'plotly')
 ```
 
 ## Quarto

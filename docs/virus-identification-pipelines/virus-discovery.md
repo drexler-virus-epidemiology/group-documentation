@@ -44,4 +44,17 @@ Select taxa and enter them into the configuration file.
 * Create the Krona plot (krona)
 * Create YAML configuration for the assembly pipeline
 
+## Quality metrics
 
+* Contig length
+* runtime
+* 
+
+## Comparison with VPipe 
+
+* Mapping, trimming & de-duplication of primers and adapters (cutadapt + custom
+  script dedup.py)
+* Host removal (Bowtie2)
+* Two modules
+    * de-novo assembly (SPAdes) & virus detection (BLASTn)
+    * reference-based assembly
