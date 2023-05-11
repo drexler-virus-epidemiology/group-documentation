@@ -39,7 +39,7 @@ Five niches of workflow manangements:
 
 REproducibility insured by including deloyment of the stack needed for each step (USING CONDA, DOCKER, syngularity)
 
-![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled.png)
+![Untitled](Python%E2%80%99s%20SnakeMake/Untitled.png)
 
 well-DOCUMENTED code to make it ADAPTABLE
 
@@ -59,11 +59,11 @@ example:
 
 - Running a shell command within conda env
 
-![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%201.png)
+![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%201.png)
 
 - Running SCRIPT within container
 
-![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%202.png)
+![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%202.png)
 
 Input or output files could be on local or stored at remote storage
 
@@ -94,7 +94,7 @@ By utilizing wildcards, Snakemake provides a flexible and scalable way to define
 
 It infers automatically all tasks will be needed for all of the input files implicitly declared by using wildcards. It is well represented by DAGs:
 
-![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%203.png)
+![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%203.png)
 
 I also detects implicit dependencies between jobs!!!!!!
 
@@ -130,9 +130,9 @@ The special `script` directive can be used to access and “pass global objects 
 - parameters
 - etc.
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%204.png)
+    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%204.png)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%205.png)
+    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%205.png)
     
     ## Tool wrapper
     
@@ -151,13 +151,13 @@ The special `script` directive can be used to access and “pass global objects 
     
     [Wrappers — Snakemake Wrappers tags/v1.28.0 documentation](https://snakemake-wrappers.readthedocs.io/en/stable/wrappers.html)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%206.png)
+    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%206.png)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%207.png)
+    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%207.png)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%208.png)
+    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%208.png)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake%20e72d91a7ef704f4eb5b63efa1b94befa/Untitled%209.png)
+    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%209.png)
     
     ### Job Scheduling
     
