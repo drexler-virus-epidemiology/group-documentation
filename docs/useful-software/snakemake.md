@@ -149,13 +149,13 @@ The special `script` directive can be used to access and “pass global objects 
     
     Some interesting wrappers:
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%206.png)
+    ![image](img/snakemake/Untitled_6.png)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%207.png)
+    ![image](img/snakemake/Untitled_7.png)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%208.png)
+    ![image](img/snakemake/Untitled_8.png)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%209.png)
+    ![image](img/snakemake/Untitled_9.png)
     
     ## Job Scheduling
     
