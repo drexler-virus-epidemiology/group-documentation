@@ -1,14 +1,12 @@
 # Python’s SnakeMake
 
-Status: Done
-
 ## Original Paper:
 
 [F1000Research Article: Sustainable data analysis with Snakemake.](https://f1000research.com/articles/10-33/v2)
 
 ## Paper Study
 
-Five niches of workflow manangements:
+Five niches of workflow managements:
 
 1. Graphical
     1. Galaxy, knime, watchdog
@@ -23,7 +21,7 @@ Five niches of workflow manangements:
     1. nextflow, snakemake, bioqueue, Bpipe, clusterflow, Clyc, bigdatascript
     2. share advantages with the second class
     3. add readability
-        1. DLS provides statments and declarations that specifies model central components
+        1. DLS provides statements and declarations that specifies model central components
     4. SNAKEMAKE DSL is written in python, therefore access to the full power of the underling programming language is maintained
 4. Declarative-way workflows
     1. POPPER
@@ -37,11 +35,11 @@ Five niches of workflow manangements:
     4. THEREFORE it is more scalable
     5. GREAT interoperability
 
-REproducibility insured by including deloyment of the stack needed for each step (USING CONDA, DOCKER, syngularity)
+Reproducibility insured by including deployment of the stack needed for each step (USING CONDA, DOCKER, singularity)
 
-![Untitled](Python%E2%80%99s%20SnakeMake/Untitled.png)
+![image](img/snakemake/Untitled.png)
 
-well-DOCUMENTED code to make it ADAPTABLE
+Well-DOCUMENTED code to make it ADAPTABLE
 
 AUTOMATIC RUN to run it several times on lab
 
@@ -51,19 +49,19 @@ PARAMETRIC modules leads to REPRODUCIBILITY
 
 ## Rule
 
-### It describes how to obtain a set of output files from a set of input files
+***It describes how to obtain a set of output files from a set of input files***
 
-Conda can be used to describe the set of used softwares, or instead we can use a container-base as docker
+Conda can be used to describe the set of used software, or instead we can use a container-base as docker.
 
-example:
+Example:
 
-- Running a shell command within conda env
+- Running a shell command within conda environment
 
-![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%201.png)
+![image](img/snakemake/Untitled_1.png)
 
 - Running SCRIPT within container
 
-![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%202.png)
+![image](img/snakemake/Untitled_2.png)
 
 Input or output files could be on local or stored at remote storage
 
@@ -94,11 +92,11 @@ By utilizing wildcards, Snakemake provides a flexible and scalable way to define
 
 It infers automatically all tasks will be needed for all of the input files implicitly declared by using wildcards. It is well represented by DAGs:
 
-![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%203.png)
+![image](img/snakemake/Untitled_3.png)
 
 I also detects implicit dependencies between jobs!!!!!!
 
-### Visualization of a DAG
+## Visualization of a DAG
 
 To generate a visual representation of the DAG (Directed Acyclic Graph) from a Snakemake-encoded pipeline, you can use the **`snakemake --dag`** command. This command generates a graph in the DOT format, which can be converted into an image using Graphviz.
 
@@ -123,16 +121,15 @@ Note: Make sure you have Graphviz installed on your system before running the **
 ## Script integration
 
 The special `script` directive can be used to access and “pass global objects as arguments“ in python scripts called by rules. The code called will be able to access:
-
 - input files
 - output files
 - wildcards values
 - parameters
 - etc.
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%204.png)
+![image](img/snakemake/Untitled_4.png)
     
-    ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%205.png)
+![image](img/snakemake/Untitled_5.png)
     
     ## Tool wrapper
     
@@ -143,13 +140,14 @@ The special `script` directive can be used to access and “pass global objects 
     In these cases, it is reccomended to running with the use conda flag:
     
     > `snakemake --use-conda`
-    > 
     
     Basically, a wrapper can be used by simply copying and adapting a provided example rule. Snakemake possesses a huge repository of pre-defined wrappers.
     
     For example, one can run bioinformatic tools simply by searching by its wrapper identification:
     
     [Wrappers — Snakemake Wrappers tags/v1.28.0 documentation](https://snakemake-wrappers.readthedocs.io/en/stable/wrappers.html)
+    
+    Some interesting wrappers:
     
     ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%206.png)
     
@@ -159,7 +157,7 @@ The special `script` directive can be used to access and “pass global objects 
     
     ![Untitled](Python%E2%80%99s%20SnakeMake/Untitled%209.png)
     
-    ### Job Scheduling
+    ## Job Scheduling
     
     When running SnakeMake on the top of a middleware from, for example, a job scheduling system or a specific Cloud-based middleware, snakeMake does not govern resources anymore, but attribute this to the middleware: SnakeMake passes all information about job resource requirements (threads, memory, disk storage). Middleware chooses best machine for this.
     
@@ -169,3 +167,9 @@ The special `script` directive can be used to access and “pass global objects 
     - PBS
     - LSF
     - Kubernetes
+    
+    ### Running a snakemake with Slurm
+    There is a page in our institution's on how one could run a snakemake pipeline inside a given conda environment.
+    [BIH HPC Docs](https://bihealth.github.io/bih-cluster/slurm/snakemake/)
+
+
