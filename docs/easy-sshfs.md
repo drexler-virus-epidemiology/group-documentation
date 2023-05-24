@@ -94,11 +94,9 @@ mount_BIH_HPC
 ## References
 
 All the built content here used as basis the information provided by our BIH HPC Docs. Detailed explanations of storage access instructions and good practices could be found in:
-
 - [BIH HPC Docs - Storage and Volumes: Locations](https://bihealth.github.io/bih-cluster/storage/storage-locations/)
 - [BIH HPC Docs - Nodes and Storage Volumes](https://bihealth.github.io/bih-cluster/overview/storage/)
 
 To learn how to customize your shell and add function and aliases in your profile, just check:
-
 - [Bashrc Customization Guide – How to Add Aliases, Use Functions, and More](https://www.freecodecamp.org/news/bashrc-customization-guide/)
 
