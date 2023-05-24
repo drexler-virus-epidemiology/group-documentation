@@ -1,33 +1,33 @@
-# Efficient Multiple Sequence Alignment (MSA) for closely related viral genomes - Application for circular genomes
+# Efficient Multiple Sequence Alignment (MSA) for closely related viral genomes - also applicable for circular genomes
 
-# What
+## What
 
 Sometimes is really difficult to align whole genomes because of several reason as poor sequenced extremities or circular genetic material constraints. One approach to deal with these difficulties is to use reference-based multiple sequence alignment (MSA) methods. 
 
-# Why
+## Why
 
 Using a reference genome make the things easier! (And sometimes more accurate)
 
 The MAFFT tool provides several options for MSA of closely related viral genomes. These include the "6merpair" option, which aligns sequences by comparing all 6-mers in a pair of sequences, the "add" option, which adds new sequences to an existing alignment, and the "addfragments" option, which aligns a set of sequences with a reference sequence by adding fragments of the sequences to the reference.  The "adjustdirection" option can also be used to adjust the direction of sequences to optimize the alignment.
 
-# How
+## How
 
 First, you need to have the MAFFT software version 7+ properly installed. Installation instructions could be find [here](https://mafft.cbrc.jp/alignment/software/).
-
 Then, it is extremely recommended to have a reference that well-fit your alignment requirements!
-
+	*This could be a NC_XXXX genomic sequence of your virus of interest.*
 After that:
-
 1. Depending on the number of genomes to align, use the standard accurate tool to align the genomes.
     1. Usually for few to several genomes, the LINSI algorithm from MAFFT runs with no time-constraint problems.
 2. Mandatorily, try to run a MSA with just the `--add` flag.
-3. Test making alignments with combinations of `--6mer` and `--addfragments`flag
+3. Test making alignments with combinations of `--6mer`,  `--add`,  and `--addfragments` flags.
 4. Sometimes, if you are unsure about the direction of your genetic sequence (forward ou reverse complement), use `--adjustdiirection` option.
 5. To speed up the analysis, use most CPU threads you can and, if unsure, just use `--threads -1`.
 
-## Generally, for highly conserved and closely-related genomes (~0.9% identity), `--6merpair` pair is recommended!
+***Generally, for highly conserved and closely-related genomes (~0.9 identity), `--6merpair` pair is recommended!***
 
-## Otherwise, use it without the **`--6merpair`** and with **`--add` instead of `--adfragments`**: It’s suitable when the input sequences are less closely related, the sequences to be added are fewer and a reference MSA is available
+**Otherwise, use it without the **`--6merpair`** and with **`--add` instead of `--adfragments`**: It’s suitable when the input sequences are less closely related, the sequences to be added are fewer and a reference MSA is available.**
+
+The execution  of the commands bellow creates 4 different MSA. In all options,  '15genomes.fasta' is a fasta file with our target sequences and 'ref.fasta' is a fasta file containing the reference genome.
 
 ```bash
 
@@ -44,11 +44,11 @@ mafft --adjustdirection --6merpair --thread 4 --keeplength --addfragments '15gen
 mafft --thread 4 --keeplength --add '15genomes.fasta' 'ref.fasta' > 'add_align.fasta'
 ```
 
-# Results
+## Results
 
 Using 15 hepatitis B virus genomes and a reference genome, after performing some alignments, one could obtain results like these:
 
-![Untitled](Efficient%20Multiple%20Sequence%20Alignment%20(MSA)%20for%20cl%200688842bcfe44982911274da1a4e2c87/Untitled.png)
+![comparison](img/mafft-with-reference/Untitled.png)
 
 We can see that:
 
@@ -58,13 +58,13 @@ We can see that:
 
 LINSI (most accurate) MSA:
 
-![Untitled](Efficient%20Multiple%20Sequence%20Alignment%20(MSA)%20for%20cl%200688842bcfe44982911274da1a4e2c87/Untitled%201.png)
+![LINSI](img/mafft-with-reference/Untitled_1.png)
 
 `--add` reference-based MSA:
 
-![Untitled](Efficient%20Multiple%20Sequence%20Alignment%20(MSA)%20for%20cl%200688842bcfe44982911274da1a4e2c87/Untitled%202.png)
+![--add](img/mafft-with-reference/Untitled_2.png)
 
-# Reference:
+## Reference:
 
 This is the user guide from MAFFT regarding the "add", "addfragment", and "6mer" options.
 
@@ -73,3 +73,4 @@ This is the user guide from MAFFT regarding the "add", "addfragment", and "6mer"
 This page provides a more detailed explanation of the reference-based multiple sequence alignment (MSA) implemented in the MAFFT tool.
 
 [Add new sequences to an existing alignment using MAFFT](https://mafft.cbrc.jp/alignment/server/add.html)
+
