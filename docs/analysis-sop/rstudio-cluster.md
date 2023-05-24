@@ -22,7 +22,7 @@ The process of starting a session is straight-forward. Open the website of the
 to `Interactive Apps` in the navigation bar and select `RStudio Server`.
 
 <figure markdown>
-  ![OnDemand Portal](img/cluster-on-demand-portal.png){ width="800" }
+  ![OnDemand Portal](img/rstudio-cluster/cluster-on-demand-portal.png){ width="800" }
   <figcaption>The OnDemand Portal</figcaption>
 </figure>
 
@@ -34,7 +34,7 @@ period, the session is ready and can be launched in a new tab by pressing the
 `Connect to RStudio Server`-button.
 
 <figure markdown>
-  ![RStudio Session](img/rstudio-session-ready.png){ width="800" }
+  ![RStudio Session](img/rstudio-cluster/rstudio-session-ready.png){ width="800" }
   <figcaption>The RStudio session can now be launched</figcaption>
 </figure>
 

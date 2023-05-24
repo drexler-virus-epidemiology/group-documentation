@@ -19,7 +19,9 @@ nav:
   - 'GitHub': github.md
   - 'GitLab': gitlab.md
   - 'R': r.md
-  - 'BIH-Cluster': bih-cluster.md
+  - 'BIH-Cluster': 
+    - 'Introduction': bih-cluster/bih-cluster-introduction.md
+    - 'Filesystem mount': bih-cluster/filesystem-mount-sshfs.md 
   - 'Data Organisation': 
     - 'File system': data-organisation/file-system.md
     - 'NGS runs': data-organisation/ngs-runs.md
@@ -28,6 +30,7 @@ nav:
     - 'Virus Discovery': virus-identification-pipelines/virus-discovery.md
     - 'Virus Assembly': virus-identification-pipelines/virus-assembly.md
   - 'Analysis SOP':
+    - 'MSA using reference': analysis-sop/mafft-with-reference.md
     - 'BCL to FASTQ conversion': analysis-sop/bcl-fastq-conversion.md
     - 'RStudio on HPC cluster': analysis-sop/rstudio-cluster.md
   - 'Useful Software':
@@ -38,6 +41,7 @@ nav:
     - 'gget': useful-software/gget.md
     - 'Kraken 2': useful-software/kraken-2.md
     - 'Serratus': useful-software/serratus.md
+    - 'Snakemake': useful-software/snakemake.md
     - 'SPAdes': useful-software/spades.md
   - 'To-Do': todo.md
 
