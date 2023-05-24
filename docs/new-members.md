@@ -13,6 +13,9 @@
 
 * Proxy settings only work in the browser but not on the command line, so they need to be configured manually
 * The proxy `Proxy-Anleitung` has a section for manual proxy configuration at the end
+* Set Proxy to automatic in browser & system network connections
+* Web Proxy: proxy.charite.de, Port 8080, do not use for `*.charite.de`
+* check with `nslookup google.com`, `resolvectl status`, `host -v archlinux.org`
 
 ## Register PC with IT
 
@@ -75,4 +78,7 @@
 
 * A linux version of the VMWare client exists in AUR: `vmware-horizon-client`
 
+## Order new stuff
 
+* CSPortal: https://csportal.charite.de/irj/portal
+* To order stuff you need a [Leistungsstelle](https://intranet.charite.de/fileadmin/user_upload/microsites/gb/fi/Einkauf/Meldungen/Leistungsstellenantrag_ESP_V32.pdf)
