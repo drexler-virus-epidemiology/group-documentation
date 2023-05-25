@@ -30,9 +30,10 @@ nav:
     - 'Virus Discovery': virus-identification-pipelines/virus-discovery.md
     - 'Virus Assembly': virus-identification-pipelines/virus-assembly.md
   - 'Analysis SOP':
-    - 'MSA using reference': analysis-sop/mafft-with-reference.md
     - 'BCL to FASTQ conversion': analysis-sop/bcl-fastq-conversion.md
+    - 'MSA using reference': analysis-sop/mafft-with-reference.md
     - 'RStudio on HPC cluster': analysis-sop/rstudio-cluster.md
+    - 'Samtools alignment check': analysis-sop/samtools-alignment-check.md
   - 'Useful Software':
     - 'Bowtie 2': useful-software/bowtie-2.md
     - 'DIAMOND': useful-software/diamond.md
