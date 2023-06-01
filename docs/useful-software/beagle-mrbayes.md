@@ -18,15 +18,15 @@ Follow the instructions from the [official README](https://github.com/beagle-dev
 
 ```bash
 # Find a path to where to install the software
-export INSTALL='<PATH/TO/INSTALL/LOCATION>'
+export INSTALL_DIR='<PATH/TO/INSTALL/LOCATION>'
 
 # Compilation process
-cd $INSTALL
+cd $INSTALL_DIR
 git clone --depth=1 https://github.com/beagle-dev/beagle-lib.git
 cd beagle-lib
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL/beagle-lib/ \
+cmake -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR/beagle-lib/ \
     -DBUILD_JNI=ON \
     -DBUILD_CUDA=ON \
     -DBUILD_OPENCL=OFF \
@@ -39,8 +39,8 @@ make install
 Since Beagle was installed in a non-default location, two environment variables need to be persistently set for it to be recognized by other programs. Add this to your `~/.bashrc`.
 
 ```bash
-export LD_LIBRARY_PATH=$INSTALL/beagle-lib/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$INSTALL/beagle-lib/lib/pkg-config:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$INSTALL_DIR/beagle-lib/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$INSTALL_DIR/beagle-lib/lib/pkg-config:$PKG_CONFIG_PATH
 ```
 
 ## Install MrBayes
@@ -59,7 +59,10 @@ gcc-11 --version
 export | grep CUDA_VISIBLE_DEVICES # should return '0' for one GPU
 
 # Go to the installation directory
-cd $INSTALL
+cd $INSTALL_DIR
+
+# Set CC variable to local GCC at
+export CC=/opt/local/gcc-7.2.0-0/bin/
 
 # Compilation process
 git clone --depth=1 https://github.com/NBISweden/MrBayes.git
@@ -69,12 +72,12 @@ cd build
 ../configure \
     --with-beagle \
     --with-mpi \ # REMOVE this flag when 
-    --prefix=$INSTALL/MrBayes
+    --prefix=$INSTALL_DIR/MrBayes
 make
 make install
 ```
 
-This will create a binary `mb` in `$INSTALL/MrBayes/bin` that can be executed
+This will create a binary `mb` in `$INSTALL_DIR/MrBayes/bin` that can be executed
 directly (without MPI support) or using SLURM (with MPI support). In order to
 compile two versions of MrBayes, rename the original binary (e. g. `mb-mpi`)
 remove the `--with-mpi` flag and reconfigure and repeat `make install` to
@@ -85,14 +88,61 @@ create a new `mb` binary in the same directory.
 Beagle and MrBayes should be installed on the HPC cluster in the group's work
 directory at `/fast/scratch/groups/ag-drexler/02_software`. It can be installed
 the same way as described above, but most dependencies should be installed
-using a `conda` environment.
+using a `conda` environment. The installation process is much more fragile due
+user's inability to install libraries into standard locations. So the current
+way to make it work is to install cuda and all dependencies, Java as well as
+libtool and subversion.
+
+* libtool, subversion 
+* cuda, cuda-tools (`-c nvidia`)
+* openjdk=11
 
 ```
+# Start a shell on GPU partition 
 srun --time=01-01 --mem=32G --ntasks=1 -p gpu --gres=gpu:tesla:1  --pty bash -i
-module load cmake openmpi gcc
+
+# Install dependencies
 conda create -n mrbayes -c nvidia cuda-nvcc cuda-toolkit 
 conda activate mrbayes
-conda install gcc ...
+conda install openjdk=11 libtool subversion
+module load cmake gcc
+```
+
+First install Beagle in a location set using 
+
+```
+export INSTALL_DIR='<PATH/TO/INSTALL/LOCATION>'
+cd $INSTALL_DIR
+git clone --depth=1 https://github.com/beagle-dev/beagle-lib.git
+cd beagle-lib
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR/beagle-lib/build \
+     -DBUILD_JNI=ON \
+     -DBUILD_CUDA=ON \
+     -DBUILD_OPENCL=OFF \
+     -DCMAKE_C_COMPILER=/opt/local/gcc-7.2.0-0/bin/gcc \
+     -DCMAKE_CXX_COMPILER=/opt/local/gcc-7.2.0-0/bin/g++ \
+    ..
+make install
+```
+
+To install MrBayes...
+
+```
+export CC=/opt/local/gcc-7.2.0-0/bin/
+git clone --depth=1 https://github.com/NBISweden/MrBayes.git
+cd $INSTALL_DIR
+cd MrBayes
+mkdir build
+cd build
+../configure \
+    --with-beagle \
+    --enable-doc=no \
+    --prefix=$INSTALL_DIR/MrBayes/build
+make
+make install
+
 ```
 
 ## Check Installation 
@@ -101,7 +151,7 @@ conda install gcc ...
 nvidia-smi
 
 # In MrBayes 
-$INSTALL/MrBayes/bin/mb
+$INSTALL_DIR/MrBayes/bin/mb
 > showbeagle
 > help set
 ```
@@ -109,3 +159,4 @@ $INSTALL/MrBayes/bin/mb
 ## References
 
 * The official MrBayes manual can be found [here](https://mrbayes.sourceforge.net/mb3.2_manual.pdf)
+* HPC documentation about GPU nodes can be found [here](https://bihealth.github.io/bih-cluster/how-to/connect/gpu-nodes/)
