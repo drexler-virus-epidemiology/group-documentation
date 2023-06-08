@@ -83,6 +83,13 @@ if (checkForUpdates) {
   )
 }
 
+# When within the Charite network or VPN, proxy settings need to be adapted
+chariteVPN <- TRUE 
+if (chariteVPN) {
+    Sys.setenv(https_proxy="proxy.charite.de:8080")
+    Sys.setenv(http_proxy="proxy.charite.de:8080")
+}
+
 # ggplot theme
 ggplot2::theme_set(
   theme_tufte(base_size = 14) +
