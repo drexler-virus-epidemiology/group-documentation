@@ -82,10 +82,66 @@ rclone sync ~/<SOME/FOLDER> OneDriveBackup:<SOME/REMOTE/FOLDER>
 Having a fully automatic backup solution requires more effort but is important
 to make regular backups as convenient as possible. 
 
-!!! note "Automatic Backups"
-    This section should describe on how to easily configure automatic,
-    scheduled backups using rclone. I have not yet found a good solution, but
-    will update this section.
+An easy way is to configure a cronjob using `cronie`. For this, all that is
+necessary is a bash script that handles the file synchronization using `rclone
+sync` that can be executed in regular intervals using a cronjob. First, install
+`cronie` and check whether the `crontab` program is available on your system.
+
+```bash
+# Check the version of the cronie installation
+crontab -V
+```
+
+Next, write a bash-script to backup the data of specified directories.
+
+``` bash
+#! /bin/bash
+
+# Create a file to log the backup process
+LOG_FILE="</PATH/TO/LOG/>backup.log"
+
+# Select local folders to be sync'd to the remote destination
+BACKUP_SOURCES=(
+    "</PATH/TO/FOLDER>"
+    "</PATH/TO/SOME/OTHER/FOLDER>"
+)
+
+# Select a directory on the previously configured MyOneDrive
+BACKUP_DEST="MyOneDrive:<PATH/TO/FOLDER>"
+
+# Select options to run with rclone
+RCLONE_OPTS="--progress --verbose"
+
+# Loop through each source and sync it to the remote destination
+for SOURCE in "${BACKUP_SOURCES[@]}"; do
+    rclone sync "$SOURCE" "$BACKUP_DEST" $RCLONE_OPTS
+done
+
+# Log the backup process
+date >> "$LOG_FILE"
+echo "Backup completed." >> "$LOG_FILE"
+```
+
+This script should be saved, e. .g. as `backup.sh` and made executable
+
+```bash
+# Open a terminal in the same directory as the script and change the execution
+# permission
+chmod u+x backup.sh
+```
+
+Using `crontab`, periodic execution of the script can be configured. For
+example, we can configure daily execution of the script at 4 PM.
+
+```bash
+# Open the cron-job configuration
+crontab -e
+
+# In the open configuration, create a new line with the backup script
+0 16 * * * </PATH/TO/>backup.sh
+```
+
+Check for scheduled jobs using `crontab -l`.
 
 ## Results
 
