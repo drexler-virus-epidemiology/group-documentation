@@ -25,6 +25,7 @@ nav:
   - 'Data Organisation': 
     - 'File system': data-organisation/file-system.md
     - 'NGS runs': data-organisation/ngs-runs.md
+    - 'OneDrive Backup': data-organisation/onedrive-backup.md
   - 'Documentation': documentation.md
   - 'Analysis Pipelines':
     - 'Virus Discovery': virus-identification-pipelines/virus-discovery.md
@@ -35,6 +36,7 @@ nav:
     - 'RStudio on HPC cluster': analysis-sop/rstudio-cluster.md
     - 'Samtools alignment check': analysis-sop/samtools-alignment-check.md
   - 'Useful Software':
+    - 'BEAGLE & MrBayes': useful-software/beagle-mrbayes.md
     - 'Bowtie 2': useful-software/bowtie-2.md
     - 'DIAMOND': useful-software/diamond.md
     - 'fastp': useful-software/fastp.md

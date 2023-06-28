@@ -120,9 +120,8 @@ options(grType = 'plotly')
 title: "My analysis"
 author: "Carl Beuchel"
 date: today
-output:
-  html_document:
-  code_download: true
+theme: spacelab
+highlight: pygments
 format:
   html:
     df-print: kable
@@ -130,8 +129,11 @@ format:
     fig-height: 6
     code-fold: true
     code-summary: "Show the code"
-theme: spacelab #sandstone #flatfly #spacelab
-highlight: pygments
+    standalone: true
+    embed-resources: true
+output:
+  html_document:
+  code_download: true
 toc: true  
 toc-depth: 3
 number-sections: true
@@ -145,6 +147,11 @@ execute:
 editor: source
 editor_options: 
   chunk_output_type: console
+project:
+  type: default
+  preview:
+    port: 4200
+    browser: false
 ---
 ``` 
 
