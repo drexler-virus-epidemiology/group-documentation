@@ -141,7 +141,16 @@ crontab -e
 0 16 * * * </PATH/TO/>backup.sh
 ```
 
-Check for scheduled jobs using `crontab -l`.
+Check for scheduled jobs using `crontab -l`. The background daemon for cronie
+will still need to be activated using `systemctl`:
+
+```bash
+# Automatically start the service with every reboot
+systemctl enable cronie.service
+
+# Start the service
+systemctl start cronie.service
+```
 
 ## Results
 
