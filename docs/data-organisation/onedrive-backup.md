@@ -97,6 +97,8 @@ Next, write a bash-script to backup the data of specified directories.
 ``` bash
 #! /bin/bash
 
+echo "Starting backup."
+
 # Create a file to log the backup process
 LOG_FILE="</PATH/TO/LOG/>backup.log"
 
@@ -114,6 +116,15 @@ RCLONE_OPTS="--progress --verbose"
 
 # Loop through each source and sync it to the remote destination
 for SOURCE in "${BACKUP_SOURCES[@]}"; do
+    
+    # Remove trailing slash ('/') characters    
+    SOURCE=$(echo "$SOURCE" | sed 's:/*$::')
+    if [[ $SOURCE =~ /([^/]+)$ ]]; then
+        DEST_FOLDER="${BASH_REMATCH[1]}"
+    else
+        continue
+    fi
+    echo "Backing up: $SOURCE"
     rclone sync "$SOURCE" "$BACKUP_DEST" $RCLONE_OPTS
 done
 
